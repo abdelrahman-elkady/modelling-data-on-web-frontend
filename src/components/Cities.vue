@@ -1,19 +1,20 @@
 <template>
   <div>
-    <div class="ui green centered segment">
-      <h1>Luxor</h1>
-
+    <div class="ui green segment">
+      <h1 class="centered">Luxor</h1>
+      <city-detail />
     </div>
-    <div class="ui green centered segment">
-      <h1>Hawaii</h1>
-
+    <div class="ui green segment">
+      <h1 class="centered">Hawaii</h1>
+      <city-detail />
     </div>
-    <div class="ui green centered segment">
-      <h1>New York</h1>
-
+    <div class="ui green segment">
+      <h1 class="centered">New York</h1>
+      <city-detail />
     </div>
-    <div class="ui green centered segment">
-      <h1>Dubai</h1>
+    <div class="ui green segment">
+      <h1 class="centered">Dubai</h1>
+      <city-detail />
     </div>
   </div>
 </template>
@@ -36,7 +37,6 @@ export default {
 
 <style scoped>
   .ui.segment {
-    max-width: 50%;
     margin: 0 auto;
     margin-bottom: 30px;
     padding: 20px;

@@ -11,6 +11,7 @@ import semantic from 'semantic' // eslint-disable-line
 import Home from '@/components/Home'
 import Seasons from '@/components/Seasons'
 import Cities from '@/components/Cities'
+import CityDetail from '@/components/CityDetail'
 
 import _ from 'lodash';
 
@@ -19,7 +20,7 @@ Vue.config.productionTip = false
 Vue.use(VueResource)
 Vue.http.options.emulateJSON = true;
 
-let components = [Home, Seasons, Cities];
+let components = [Home, Seasons, Cities, CityDetail];
 
 // Create components to be accessible everywhere
 _.forEach(components, component => {
