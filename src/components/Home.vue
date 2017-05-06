@@ -1,6 +1,8 @@
 <template>
   <div>
-    
+    <img class="ui centered medium circular image logo" src="/static/logo.png"/>
+
+    <button class="ui button huge">Cities in Season</button>
   </div>
 </template>
 
@@ -15,7 +17,13 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  /*Those are SCOPED styles, works only in this component*/
+  .logo {
+    margin-top: 5vh;
+  }
 
+  .button {
+    margin-top: 10px;
+  }
 </style>
