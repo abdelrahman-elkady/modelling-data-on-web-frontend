@@ -2,7 +2,39 @@
   <div>
     <img class="ui centered medium circular image logo" src="/static/logo.png">
 
-    <button class="ui button huge" v-on:click="fetchSummerCities">Cities in Summer (EXAMPLE)</button>
+    <!-- RADIO BUTTONS -->
+    <div class="ui form centered">
+      <div class="grouped fields">
+        <label>Select the season for your visit</label>
+        <div class="field">
+          <div class="ui radio checkbox">
+            <input type="radio" name="season" value="summer" v-model="season">
+            <label>Summer</label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui radio checkbox">
+            <input type="radio" name="season" value="winter" v-model="season">
+            <label>Winter</label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui radio checkbox">
+            <input type="radio" name="season" value="fall" v-model="season">
+            <label>Fall</label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui radio checkbox">
+            <input type="radio" name="season" value="spring" v-model="season">
+            <label>Spring</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END RADIO BUTTONS -->
+
+    <button class="ui button huge" v-on:click="filterCitiesBySeason">Search</button>
 
     <hr>
 
@@ -12,7 +44,7 @@
 
 
     <div class="ui bulleted list">
-      <h2 class="item" v-for="city in summerCities">
+      <h2 class="item" v-for="city in cities">
         {{city}}
       </h2>
     </div>
@@ -29,13 +61,31 @@ export default {
 
   data () {
     return {
-      summerCities: []
+      season: '',
+      cities: []
     }
   },
 
   methods: {
-    fetchSummerCities () {
-      let body = {query: queries.LIST_SUMMER_CITIES, output: 'json'};
+    filterCitiesBySeason () {
+      let query = '';
+
+      switch(this.season) {
+        case 'summer':
+          query = queries.LIST_SUMMER_CITIES;
+          break;
+        case 'winter':
+          query = queries.LIST_WINTER_CITIES;
+          break;
+        case 'fall':
+          query = queries.LIST_FALL_CITIES;
+          break;
+        case 'spring':
+          query = queries.LIST_SPRING_CITIES;
+          break;
+      }
+
+      let body = {query, output: 'json'};
 
       this.$http.post('http://localhost:3030/ds/query', body).then(
         response => {
@@ -45,12 +95,16 @@ export default {
 
           // Getting the name after the Hash !
           let cityNames = _.map(citiesURIs, uri => uri.split('#')[1]);
-          this.summerCities = cityNames;
+          this.cities = cityNames;
 
 
         },
         err => console.error(err)
       );
+    },
+
+    isChecked() {
+
     }
   }
 }
@@ -64,5 +118,9 @@ export default {
 
   .ui.button {
     margin-top: 20px;
+  }
+
+  .ui.form {
+    padding-top: 20px;
   }
 </style>
