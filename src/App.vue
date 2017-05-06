@@ -8,6 +8,11 @@
         Home
       </router-link>
 
+      <router-link to="/cities" class="item">
+        <i class="map icon"></i>
+        Cities
+      </router-link>
+
       <router-link to="/seasons" class="item">
         <i class="umbrella icon"></i>
         Search by seasons
