@@ -2,12 +2,13 @@
   <div>
     <img class="ui centered medium circular image logo" src="/static/logo.png"/>
 
-    <button class="ui button huge" v-on:click="fetchSummerCities">Cities in Season</button>
+    <button class="ui button huge" v-on:click="fetchSummerCities">Cities in Summer (EXAMPLE)</button>
   </div>
 </template>
 
 <script>
 import queries from '@/Queries';
+import _ from 'lodash';
 
 export default {
   name: 'home',
@@ -24,7 +25,15 @@ export default {
 
       this.$http.post('http://localhost:3030/ds/query', body).then(
         response => {
-          console.log(response)
+          let body = JSON.parse(response.body);
+
+          let citiesURIs = _.map(body.results.bindings, entry => entry.city.value);
+
+          // Getting the name after the Hash !
+          let cityNames = _.map(citiesURIs, uri => uri.split('#')[1]);
+          console.log(cityNames);
+
+
         },
         err => console.error(err)
       );
