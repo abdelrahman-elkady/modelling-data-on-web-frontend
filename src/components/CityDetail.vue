@@ -34,9 +34,9 @@
 
 
     <div class="ui bulleted list">
-      <h2 class="item" v-for="activity in activities">
+      <h5 class="item" v-for="activity in activities">
         {{activity}}
-      </h2>
+      </h5>
     </div>
 
     <button class="ui button right floated green" v-on:click="search">Display</button>
