@@ -14,14 +14,23 @@
     </div>
     <div class="ui green centered segment">
       <h1>Dubai</h1>
-
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'cities'
+  name: 'cities',
+
+  data() {
+    return {
+
+    }
+  },
+
+  methods: {
+
+  }
 }
 </script>
 
