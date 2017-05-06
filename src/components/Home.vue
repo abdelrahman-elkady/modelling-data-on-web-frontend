@@ -1,8 +1,22 @@
 <template>
   <div>
-    <img class="ui centered medium circular image logo" src="/static/logo.png"/>
+    <img class="ui centered medium circular image logo" src="/static/logo.png">
 
     <button class="ui button huge" v-on:click="fetchSummerCities">Cities in Summer (EXAMPLE)</button>
+
+    <hr>
+
+    <h1 class="centered">
+      Results
+    </h1>
+
+
+    <div class="ui bulleted list">
+      <h2 class="item" v-for="city in summerCities">
+        {{city}}
+      </h2>
+    </div>
+
   </div>
 </template>
 
@@ -15,7 +29,7 @@ export default {
 
   data () {
     return {
-
+      summerCities: []
     }
   },
 
@@ -31,7 +45,7 @@ export default {
 
           // Getting the name after the Hash !
           let cityNames = _.map(citiesURIs, uri => uri.split('#')[1]);
-          console.log(cityNames);
+          this.summerCities = cityNames;
 
 
         },
