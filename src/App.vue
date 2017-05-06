@@ -1,12 +1,28 @@
 <template>
   <div id="app">
+
+    <div class="ui left demo vertical inverted visible sidebar labeled icon menu">
+
+      <router-link to="/" class="item">
+        <i class="home icon"></i>
+        Home
+      </router-link>
+
+      <router-link to="/seasons" class="item">
+        <i class="umbrella icon"></i>
+        Home
+      </router-link>
+
+    </div>
+
     <router-view></router-view>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+
 }
 </script>
 
