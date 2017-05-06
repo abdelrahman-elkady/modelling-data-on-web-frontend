@@ -44,7 +44,7 @@
 
 
     <div class="ui bulleted list">
-      <h2 class="item" v-for="cihomety in cities">
+      <h2 class="item" v-for="city in cities">
         {{city}}
       </h2>
     </div>
