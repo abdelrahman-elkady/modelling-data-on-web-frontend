@@ -30,6 +30,17 @@ module.exports = merge(baseWebpackConfig, {
       template: 'index.html',
       inject: true
     }),
-    new FriendlyErrorsPlugin()
+    new FriendlyErrorsPlugin(),
+    new webpack.ProvidePlugin({
+        // jquery
+        $: 'jquery',
+        jQuery: 'jquery',
+        'window.jQuery': 'jquery',
+
+        // Semantic UI
+        semantic: 'semantic-ui',
+        Semantic: 'semantic-ui',
+        'semantic-ui': 'semantic-ui'
+    })
   ]
 })
