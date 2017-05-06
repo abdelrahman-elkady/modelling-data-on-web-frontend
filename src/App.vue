@@ -10,7 +10,7 @@
 
       <router-link to="/seasons" class="item">
         <i class="umbrella icon"></i>
-        Home
+        Search by seasons
       </router-link>
 
     </div>
