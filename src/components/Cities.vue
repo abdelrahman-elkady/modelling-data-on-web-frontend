@@ -2,19 +2,19 @@
   <div>
     <div class="ui green segment">
       <h1 class="centered">Luxor</h1>
-      <city-detail />
+      <city-detail city-name="Luxor"/>
     </div>
     <div class="ui green segment">
       <h1 class="centered">Hawaii</h1>
-      <city-detail />
+      <city-detail city-name="Hawaii"/>
     </div>
     <div class="ui green segment">
       <h1 class="centered">New York</h1>
-      <city-detail />
+      <city-detail city-name="New_York"/>
     </div>
     <div class="ui green segment">
       <h1 class="centered">Dubai</h1>
-      <city-detail />
+      <city-detail city-name="Dubai"/>
     </div>
   </div>
 </template>
