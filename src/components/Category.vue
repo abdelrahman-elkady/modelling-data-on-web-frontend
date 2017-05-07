@@ -1,6 +1,5 @@
 <template>
 <div>
-    <h1><i class="motorcycle icon"></i> Search by Category !</h1>
   <div>
     <!-- RADIO BUTTONS -->
     <div class="ui form">

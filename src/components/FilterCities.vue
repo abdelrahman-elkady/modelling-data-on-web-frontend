@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1><i class="umbrella icon"></i>Search by season !</h1>
+    <h3 class="ui horizontal divider header"><i class="umbrella icon"></i> Search by season</h3>
 
     <!-- RADIO BUTTONS -->
     <div class="ui form centered">
@@ -44,7 +44,7 @@
 
 
     <div class="category-section">
-      <hr>
+      <h3 class="ui horizontal divider header"><i class="motorcycle icon"></i> Search by category</h3>
       <Category />
     </div>
 
