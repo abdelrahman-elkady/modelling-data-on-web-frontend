@@ -37,7 +37,7 @@
 
       <router-link to="/entertainment" class="item">
         <i class="umbrella icon"></i>
-        Search Entertainment 
+        Entertainment 
       </router-link>
 
 
