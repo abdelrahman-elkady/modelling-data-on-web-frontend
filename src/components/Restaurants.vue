@@ -3,21 +3,20 @@
 
     <div class="ui green segment">
       <button class="ui green button" v-on:click="listAllResturants">All</button>
-      <button class="ui blue button" v-on:click="listWaterSports">Water sports</button>
 
       <div class="ui icon input">
         <input type="text" placeholder="Search with price" v-model="filterPrice">
-        <i class="circular search link icon" v-on:click="filterWithPrice"></i>
+        <i class="circular search link icon" v-on:click=""></i>
       </div>
     </div>
 
-    <div class="ui segments" v-for="sport in sports">
+    <div class="ui segments" v-for="restaurant in restaurants">
       <div class="ui segment">
         <div class="item">
           <div class="content">
-            <h5 class="ui header">{{sport.name}}</h5>
+            <h5 class="ui header">{{restaurant.name}}</h5>
             <div class="meta">
-              <span v-if="sport.price !== undefined">price: {{sport.price}}</span>
+              <span v-if="restaurant.cuisine !== undefined">cuisine: {{restaurant.cuisine}}</span>
             </div>
           </div>
         </div>
@@ -36,7 +35,7 @@ export default {
 
   data() {
     return {
-      sports: [],
+      restaurants: [],
       filterPrice: ''
     }
   },
@@ -52,13 +51,13 @@ export default {
           let body = JSON.parse(response.body);
           console.log(body);
 
-          let sports = _.map(
+          let restaurants = _.map(
             _.map(body.results.bindings, entry => ({uri: entry.restaurant.value, cuisine: entry.cuisine.value})),
-            sport => ({name: sport.uri.split('#')[1], price: sport.price})
+            restaurant => ({name: restaurant.uri.split('#')[1], cuisine: restaurant.cuisine})
           );
 
 
-          this.sports = sports;
+          this.restaurants = restaurants;
 
         },
         err => console.error(err)
