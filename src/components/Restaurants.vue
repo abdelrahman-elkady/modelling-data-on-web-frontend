@@ -8,6 +8,11 @@
         <input type="text" placeholder="Search with cuisine" v-model="filterCuisine">
         <i class="circular search link icon" v-on:click="listRestaurantsWithCuisine"></i>
       </div>
+
+      <div class="ui checkbox">
+        <input type="checkbox" v-model="cheapOnly">
+        <label>Only cheap restaurants</label>
+      </div>
     </div>
 
     <div class="ui segments" v-for="restaurant in restaurants">
@@ -36,12 +41,16 @@ export default {
   data() {
     return {
       restaurants: [],
-      filterCuisine: ''
+      filterCuisine: '',
+      cheapOnly: false
     }
   },
 
   methods: {
     listAllResturants() {
+      // Reset like a boss B|
+      this.cheapOnly = false;
+
       let query = queries.constantQueries.LIST_RESTAURANT_WITH_CUISINE;
 
       let body = {query, output: 'json'};
@@ -66,7 +75,37 @@ export default {
 
     listRestaurantsWithCuisine() {
       let cuisine = this.filterCuisine.charAt(0).toUpperCase() + this.filterCuisine.slice(1).toLowerCase();
-      let query = queries.variableQueries.LIST_RESTAURANTS_WITH_SPECIFIC_CUISINE(cuisine);
+
+      let query = '';
+
+      if(this.cheapOnly) {
+        query = queries.variableQueries.LIST_RESTAURANTS_WITH_SPECIFIC_CUISINE_CHEAP(cuisine);
+      } else {
+        query = queries.variableQueries.LIST_RESTAURANTS_WITH_SPECIFIC_CUISINE(cuisine);
+      }
+
+      let body = {query, output: 'json'};
+
+      this.$http.post('http://localhost:3030/ds/query', body).then(
+        response => {
+          let body = JSON.parse(response.body);
+          console.log(body);
+
+          let restaurants = _.map(
+            _.map(body.results.bindings, entry => ({uri: entry.restaurant.value})),
+            restaurant => ({name: restaurant.uri.split('#')[1]})
+          );
+
+
+          this.restaurants = restaurants;
+
+        },
+        err => console.error(err)
+      );
+    },
+    listCheapRestaurants() {
+      let cuisine = this.filterCuisine.charAt(0).toUpperCase() + this.filterCuisine.slice(1).toLowerCase();
+      let query = queries.variableQueries.LIST_RESTAURANTS_WITH_SPECIFIC_CUISINE_CHEAP(cuisine);
 
       let body = {query, output: 'json'};
 
