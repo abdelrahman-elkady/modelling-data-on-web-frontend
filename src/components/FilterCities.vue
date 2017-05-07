@@ -34,20 +34,20 @@
     </div>
     <!-- END RADIO BUTTONS -->
 
-    <button class="ui button huge" v-on:click="filterCitiesBySeason">Search</button>
-
-    <hr>
-
-    <h1 class="centered">
-      Results
-    </h1>
-
+    <button class="ui button right floated green" v-on:click="filterCitiesBySeason">Search</button>
 
     <div class="ui bulleted list">
-      <h2 class="item" v-for="city in cities">
+      <h5 class="item" v-for="city in cities">
         {{city}}
-      </h2>
+      </h5>
     </div>
+
+
+    <div class="category-section">
+      <hr>
+      <Category />
+    </div>
+
 
   </div>
 </template>
@@ -101,10 +101,6 @@ export default {
         },
         err => console.error(err)
       );
-    },
-
-    isChecked() {
-
     }
   }
 }
@@ -122,5 +118,16 @@ export default {
 
   .ui.form {
     padding-top: 20px;
+  }
+
+  .category-section {
+    margin-top: 120px;
+  }
+
+  h5.item {
+    max-width: 80%;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    max-height: 15px;
   }
 </style>
