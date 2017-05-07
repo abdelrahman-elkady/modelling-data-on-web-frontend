@@ -16,9 +16,9 @@
             <label>{{constants.DAY_LIGHT}}</label>
           </div>
         </div>
-        
-      
-         
+
+
+
       </div>
 
 
@@ -91,17 +91,14 @@ export default {
     this.$http.post('http://localhost:3030/ds/query', body).then(
       response => {
         let body = JSON.parse(response.body);
-     
+
         let activityURIs = '' ;
 
-        activityURIs = _.map(body.results.bindings, entry => entry.attraction.value );
-        
-
-       
+        activityURIs = _.map(body.results.bindings, entry => entry.entertainment.value );
 
         // Getting the name after the Hash !
         let activityNames = _.map(activityURIs, uri => uri.split('#')[1]);
-                
+
         this.activities = activityNames;
 
       },
@@ -121,13 +118,13 @@ export default {
 
         let activityURIs = '' ;
 
-        activityURIs = _.map(body.results.bindings, entry => entry.attraction.value  + "        price:       "+entry.price.value);        
+        activityURIs = _.map(body.results.bindings, entry => entry.attraction.value  + "        price:       "+entry.price.value);
 
-       
+
 
         // Getting the name after the Hash !
         let activityNames = _.map(activityURIs, uri => uri.split('#')[1]);
-                
+
         this.activities = activityNames;
 
       },
@@ -148,13 +145,13 @@ export default {
         let activityURIs = '' ;
 
         activityURIs = _.map(body.results.bindings, entry => entry.attraction.value );
-        
 
-       
+
+
 
         // Getting the name after the Hash !
         let activityNames = _.map(activityURIs, uri => uri.split('#')[1]);
-                
+
         this.activities = activityNames;
 
       },
@@ -175,13 +172,13 @@ export default {
         let activityURIs = '' ;
 
         activityURIs = _.map(body.results.bindings, entry => entry.attraction.value );
-       
 
-       
+
+
 
         // Getting the name after the Hash !
         let activityNames = _.map(activityURIs, uri => uri.split('#')[1]);
-                
+
         this.activities = activityNames;
 
       },
