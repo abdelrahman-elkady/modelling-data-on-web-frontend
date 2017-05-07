@@ -1,6 +1,5 @@
 <template>
 <div>
-    <h1>Search by Category !</h1>
   <div>
     <!-- RADIO BUTTONS -->
     <div class="ui form">
@@ -41,7 +40,7 @@
       </h5>
     </div>
 
-    <button class="ui button right floated green" v-on:click="filterCitiesByCategory">Display</button>
+    <button class="ui button right floated green" v-on:click="filterCitiesByCategory">Search</button>
   </div>
 </div>
 
@@ -65,7 +64,7 @@ export default {
   },
 
   methods: {
-    
+
 
     filterCitiesByCategory () {
       let query = '';
@@ -103,5 +102,12 @@ export default {
 
   .ui.form {
     padding-top: 20px;
+  }
+
+  h5.item {
+    max-width: 80%;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    max-height: 15px;
   }
 </style>

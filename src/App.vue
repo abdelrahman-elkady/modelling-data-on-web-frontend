@@ -15,14 +15,14 @@
 
 
 
-      <router-link to="/seasons" class="item">
-        <i class="umbrella icon"></i>
-        Search by seasons
+      <router-link to="/cities/filter" class="item">
+        <i class="marker icon"></i>
+        Filter Cities
       </router-link>
 
-      <router-link to="/category" class="item">
-        <i class="umbrella icon"></i>
-        Search by category
+      <router-link to="/sports" class="item">
+        <i class="bicycle icon"></i>
+        Sports
       </router-link>
 
       <router-link to="/historical" class="item">
@@ -30,7 +30,7 @@
         Search Historical 
       </router-link>
 
-      
+
 
 
     </div>

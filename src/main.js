@@ -9,12 +9,12 @@ import '../node_modules/semantic-ui/dist/semantic.min.css'
 import semantic from 'semantic' // eslint-disable-line
 
 import Home from '@/components/Home'
-import Seasons from '@/components/Seasons'
+import FilterCities from '@/components/FilterCities'
 import Cities from '@/components/Cities'
 import CityDetail from '@/components/CityDetail'
 import Category from '@/components/Category'
 import Historical from '@/components/Historical'
-
+import Sports from '@/components/Sports'
 
 
 import _ from 'lodash';
@@ -24,7 +24,8 @@ Vue.config.productionTip = false
 Vue.use(VueResource)
 Vue.http.options.emulateJSON = true;
 
-let components = [Home, Seasons, Cities, CityDetail,Category,Historical];
+
+let components = [Home, FilterCities, Cities, CityDetail, Category, Sports,Historical];
 
 // Create components to be accessible everywhere
 _.forEach(components, component => {
