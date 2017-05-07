@@ -3,6 +3,7 @@
 
     <div class="ui green segment">
       <button class="ui green button" v-on:click="listAllResturants">All</button>
+      <button class="ui blue button" v-on:click="listRestaurantsWithRate">Restaurants rate</button>
 
       <div class="ui icon input">
         <input type="text" placeholder="Search with cuisine" v-model="filterCuisine">
@@ -22,6 +23,7 @@
             <h5 class="ui header">{{restaurant.name}}</h5>
             <div class="meta">
               <span v-if="restaurant.cuisine !== undefined">cuisine: {{restaurant.cuisine}}</span>
+              <span v-if="restaurant.rate !== undefined">rate: {{restaurant.rate}}</span>
             </div>
           </div>
         </div>
@@ -102,22 +104,20 @@ export default {
         err => console.error(err)
       );
     },
-    listCheapRestaurants() {
-      let cuisine = this.filterCuisine.charAt(0).toUpperCase() + this.filterCuisine.slice(1).toLowerCase();
-      let query = queries.variableQueries.LIST_RESTAURANTS_WITH_SPECIFIC_CUISINE_CHEAP(cuisine);
+
+    listRestaurantsWithRate() {
+      let query = queries.constantQueries.LIST_RESTAURANTS_RATE;
 
       let body = {query, output: 'json'};
 
       this.$http.post('http://localhost:3030/ds/query', body).then(
         response => {
           let body = JSON.parse(response.body);
-          console.log(body);
 
           let restaurants = _.map(
-            _.map(body.results.bindings, entry => ({uri: entry.restaurant.value})),
-            restaurant => ({name: restaurant.uri.split('#')[1]})
+            _.map(body.results.bindings, entry => ({uri: entry.restaurant.value, rate: entry.rate.value})),
+            restaurant => ({name: restaurant.uri.split('#')[1], rate: restaurant.rate})
           );
-
 
           this.restaurants = restaurants;
 

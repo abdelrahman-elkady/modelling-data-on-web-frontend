@@ -163,7 +163,7 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 SELECT ?restaurant ?cuisine  WHERE {?restaurant rdf:type <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#Food>.
 ?restaurant onto:cuisine ?cuisine.}`
 ,
-  LIST_Restaurants_Rate:`
+  LIST_RESTAURANTS_RATE:`
 PREFIX onto: <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 SELECT ?restaurant ?rate  WHERE {?restaurant rdf:type <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#Food>.
