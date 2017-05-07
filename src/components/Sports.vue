@@ -5,7 +5,7 @@
 </template>
 
 <script>
-// import _ from 'lodash';
+import _ from 'lodash';
 
 export default {
   name: 'sports',
@@ -30,13 +30,14 @@ export default {
       this.$http.post('http://localhost:3030/ds/query', body).then(
         response => {
           let body = JSON.parse(response.body);
-          console.log(body);
-          //
-          // let activityURIs = _.map(body.results.bindings, entry => entry.attraction.value);
-          //
-          // // Getting the name after the Hash !
-          // let activityNames = _.map(activityURIs, uri => uri.split('#')[1]);
-          // this.activities = activityNames;
+
+          let sports = _.map(
+            _.map(body.results.bindings, entry => ({uri: entry.attraction.value, price: entry.price.value})),
+            sport => ({name: sport.uri.split('#')[1], price: sport.price})
+          );
+
+
+          this.sports = sports;
 
         },
         err => console.error(err)
