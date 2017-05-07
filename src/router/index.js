@@ -4,6 +4,8 @@ import Home from '@/components/Home'
 import Seasons from '@/components/Seasons'
 import Cities from '@/components/Cities'
 import Category from '@/components/Category'
+import Historical from '@/components/Historical'
+
 
 
 Vue.use(Router)
@@ -29,6 +31,11 @@ export default new Router({
       path: '/category',
       name: 'Category',
       component: Category
+    },
+     {
+      path: '/historical',
+      name: 'Historical',
+      component: Historical
     }
   ]
 })

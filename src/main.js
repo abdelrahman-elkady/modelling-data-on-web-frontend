@@ -13,6 +13,8 @@ import Seasons from '@/components/Seasons'
 import Cities from '@/components/Cities'
 import CityDetail from '@/components/CityDetail'
 import Category from '@/components/Category'
+import Historical from '@/components/Historical'
+
 
 
 import _ from 'lodash';
@@ -22,7 +24,7 @@ Vue.config.productionTip = false
 Vue.use(VueResource)
 Vue.http.options.emulateJSON = true;
 
-let components = [Home, Seasons, Cities, CityDetail,Category];
+let components = [Home, Seasons, Cities, CityDetail,Category,Historical];
 
 // Create components to be accessible everywhere
 _.forEach(components, component => {

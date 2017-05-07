@@ -6,10 +6,10 @@ var queries  = {
        },
         SHOW_Specific_Historical_By_Ranking :function(ranking){ 
          return `PREFIX onto: <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto>
-        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-        SELECT ?attraction  WHERE {?attraction rdf:type <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#Historical>.
-        ?attraction <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#rate> ?ranking.
-        FILTER(?`+ ranking +`)}
+          PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+          SELECT ?attraction  WHERE {?attraction rdf:type <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#Historical>.
+          ?attraction <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#rate> ?ranking.
+          FILTER(?ranking = `+ranking+`)}
         `
        },
         LIST_Sport_LessThan_SpecificPrice :function(price){

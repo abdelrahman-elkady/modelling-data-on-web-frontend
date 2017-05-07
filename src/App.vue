@@ -25,6 +25,11 @@
         Search by category
       </router-link>
 
+      <router-link to="/historical" class="item">
+        <i class="umbrella icon"></i>
+        Search Historical 
+      </router-link>
+
       
 
 
