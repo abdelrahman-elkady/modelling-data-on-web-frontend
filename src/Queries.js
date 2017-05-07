@@ -4,7 +4,7 @@ var queries  = {
         return `PREFIX onto: <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto>
        SELECT ?city WHERE { ?city onto:type \"`+category+`\"}`
        },
-        SHOW_Specific_Historical_By_Ranking :function(ranking){ 
+        SHOW_Specific_Historical_By_Ranking :function(ranking){
          return `PREFIX onto: <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto>
           PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
           SELECT ?attraction  WHERE {?attraction rdf:type <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#Historical>.
@@ -123,7 +123,7 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 SELECT ?attraction ?price  WHERE {?attraction rdf:type <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#Sports>.
 ?attraction onto:price ?price}
 `,
-  LIST_Sport_Include_Water:`
+  LIST_SPORTS_WITH_WATER:`
 PREFIX onto: <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 SELECT ?waterSport  WHERE {<http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#sports_water_sports> <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#recommends> ?waterSport.}
