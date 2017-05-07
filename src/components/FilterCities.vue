@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Search by season !</h1>
+    <h1><i class="umbrella icon"></i>Search by season !</h1>
 
     <!-- RADIO BUTTONS -->
     <div class="ui form centered">
