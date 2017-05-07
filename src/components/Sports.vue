@@ -1,6 +1,19 @@
 <template>
   <div>
 
+    <div class="ui segments" v-for="sport in sports">
+      <div class="ui segment">
+        <div class="item">
+          <div class="content">
+            <h5 class="ui header">{{sport.name}}</h5>
+            <div class="meta">
+              <span>price: {{sport.price}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 
