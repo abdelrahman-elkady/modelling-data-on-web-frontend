@@ -21,7 +21,7 @@
   <!-- END RADIO BUTTONS -->
 
   <input v-model="price" placeholder="enter max price(daylight)"><button v-on:click="listByPrice">submit</button>
-  <input v-model="duration" placeholder="enter duration(daylight)"><button v-on:click="duration">submit</button>
+  <input v-model="duration" placeholder="enter duration(daylight)"><button v-on:click="listByDuration">submit</button>
   <br></br>
   <input v-model="interest" placeholder="enter your name here">
   <input v-model="interest2" placeholder="enter Entertainment type">
@@ -105,7 +105,7 @@ export default {
         query,
         output: 'json'
       };
-      console.log(body);
+
       this.$http.post('http://localhost:3030/ds/query', body).then(
         response => {
           let body = JSON.parse(response.body);
@@ -152,23 +152,22 @@ export default {
         err => console.error(err)
       );
     },
-    duration() {
+    listByDuration() {
       let query = '';
       query = queries.variableQueries.LIST_Intertainment_By_DayLight_SpecificDurationTime(this.duration);
-
 
       let body = {
         query,
         output: 'json'
       };
-      console.log(body);
+
       this.$http.post('http://localhost:3030/ds/query', body).then(
         response => {
           let body = JSON.parse(response.body);
 
           let activityURIs = '';
 
-          activityURIs = _.map(body.results.bindings, entry => entry.entertainment.value);
+          activityURIs = _.map(body.results.bindings, entry => entry.attraction.value);
 
           // Getting the name after the Hash !
           let activityNames = _.map(activityURIs, uri => uri.split('#')[1]);
