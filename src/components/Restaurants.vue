@@ -5,8 +5,8 @@
       <button class="ui green button" v-on:click="listAllResturants">All</button>
 
       <div class="ui icon input">
-        <input type="text" placeholder="Search with price" v-model="filterPrice">
-        <i class="circular search link icon" v-on:click=""></i>
+        <input type="text" placeholder="Search with cuisine" v-model="filterCuisine">
+        <i class="circular search link icon" v-on:click="listRestaurantsWithCuisine"></i>
       </div>
     </div>
 
@@ -36,7 +36,7 @@ export default {
   data() {
     return {
       restaurants: [],
-      filterPrice: ''
+      filterCuisine: ''
     }
   },
 
@@ -49,7 +49,6 @@ export default {
       this.$http.post('http://localhost:3030/ds/query', body).then(
         response => {
           let body = JSON.parse(response.body);
-          console.log(body);
 
           let restaurants = _.map(
             _.map(body.results.bindings, entry => ({uri: entry.restaurant.value, cuisine: entry.cuisine.value})),
@@ -63,6 +62,30 @@ export default {
         err => console.error(err)
       );
 
+    },
+
+    listRestaurantsWithCuisine() {
+      let cuisine = this.filterCuisine.charAt(0).toUpperCase() + this.filterCuisine.slice(1).toLowerCase();
+      let query = queries.variableQueries.LIST_RESTAURANTS_WITH_SPECIFIC_CUISINE(cuisine);
+
+      let body = {query, output: 'json'};
+
+      this.$http.post('http://localhost:3030/ds/query', body).then(
+        response => {
+          let body = JSON.parse(response.body);
+          console.log(body);
+
+          let restaurants = _.map(
+            _.map(body.results.bindings, entry => ({uri: entry.restaurant.value})),
+            restaurant => ({name: restaurant.uri.split('#')[1]})
+          );
+
+
+          this.restaurants = restaurants;
+
+        },
+        err => console.error(err)
+      );
     }
   },
 

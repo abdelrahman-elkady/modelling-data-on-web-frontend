@@ -37,7 +37,7 @@ var queries  = {
         ?attraction <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#duration> ?duration.
         FILTER(?duration = `+duration+`).}`
        },
-        LIST_Restaurants_Specific_Cuisine :function(cuisine){
+        LIST_RESTAURANTS_WITH_SPECIFIC_CUISINE :function(cuisine){
           return `PREFIX onto: <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto>
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         SELECT ?restaurant  WHERE {?restaurant rdf:type <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#Food>.
