@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import FilterCities from '@/components/FilterCities'
 import Cities from '@/components/Cities'
-import Category from '@/components/Category'
+import Sports from '@/components/Sports'
 
 
 Vue.use(Router)
@@ -25,10 +25,10 @@ export default new Router({
       name: 'Cities',
       component: Cities
     },
-     {
-      path: '/category',
-      name: 'Category',
-      component: Category
+    {
+      path: '/sports',
+      name: 'Sports',
+      component: Sports
     }
   ]
 })
