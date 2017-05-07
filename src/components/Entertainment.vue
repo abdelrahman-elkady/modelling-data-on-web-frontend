@@ -62,6 +62,7 @@ export default {
     search() {
 
       let query = '';
+      let filter = 'entertainment';
 
       switch (this.Entertainment_search) {
         case constants.ALL_ENTERTAINMENT:
@@ -69,6 +70,7 @@ export default {
           break;
         case constants.DAY_LIGHT:
           query = queries.constantQueries.LIST_Intertainment_By_DayLight;
+          filter = 'attraction';
           break;
       }
 
@@ -80,10 +82,11 @@ export default {
       this.$http.post('http://localhost:3030/ds/query', body).then(
         response => {
           let body = JSON.parse(response.body);
+          console.log(body);
 
           let activityURIs = '';
 
-          activityURIs = _.map(body.results.bindings, entry => entry.entertainment.value);
+          activityURIs = _.map(body.results.bindings, entry => entry[filter].value);
 
           // Getting the name after the Hash !
           let activityNames = _.map(activityURIs, uri => uri.split('#')[1]);
