@@ -4,6 +4,11 @@
     <div class="ui green segment">
       <button class="ui green button" v-on:click="listAllSports">All</button>
       <button class="ui blue button" v-on:click="listWaterSports">Water sports</button>
+
+      <div class="ui icon input">
+        <input type="text" placeholder="Search with price" v-model="filterPrice">
+        <i class="circular search link icon" v-on:click="filterWithPrice"></i>
+      </div>
     </div>
 
     <div class="ui segments" v-for="sport in sports">
@@ -31,7 +36,8 @@ export default {
 
   data() {
     return {
-      sports: []
+      sports: [],
+      filterPrice: ''
     }
   },
 
@@ -76,6 +82,28 @@ export default {
             _.map(body.results.bindings, entry => ({uri: entry.waterSport.value})),
             sport => ({name: sport.uri.split('#')[1]})
           );
+
+          this.sports = sports;
+
+        },
+        err => console.error(err)
+      );
+    },
+
+    filterWithPrice() {
+      let query = queries.variableQueries.LIST_SPORTS_LESS_THAN_SPECIFIC_PRICE(this.filterPrice);
+
+      let body = {query, output: 'json'};
+
+      this.$http.post('http://localhost:3030/ds/query', body).then(
+        response => {
+          let body = JSON.parse(response.body);
+
+          let sports = _.map(
+            _.map(body.results.bindings, entry => ({uri: entry.waterSport.value, price: entry.price.value})),
+            sport => ({name: sport.uri.split('#')[1], price: sport.price})
+          );
+
 
           this.sports = sports;
 

@@ -12,7 +12,7 @@ var queries  = {
           FILTER(?ranking = `+ranking+`)}
         `
        },
-        LIST_Sport_LessThan_SpecificPrice :function(price){
+        LIST_SPORTS_LESS_THAN_SPECIFIC_PRICE :function(price){
          return `PREFIX onto: <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto>
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         SELECT ?waterSport ?price  WHERE {<http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#sports_water_sports> <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#recommends> ?waterSport.
