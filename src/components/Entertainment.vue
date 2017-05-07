@@ -20,7 +20,7 @@
   </div>
   <!-- END RADIO BUTTONS -->
 
-  <input v-model="price" placeholder="enter max price(daylight)"><button v-on:click="price">submit</button>
+  <input v-model="price" placeholder="enter max price(daylight)"><button v-on:click="listByPrice">submit</button>
   <input v-model="duration" placeholder="enter duration(daylight)"><button v-on:click="duration">submit</button>
   <br></br>
   <input v-model="interest" placeholder="enter your name here">
@@ -82,7 +82,6 @@ export default {
       this.$http.post('http://localhost:3030/ds/query', body).then(
         response => {
           let body = JSON.parse(response.body);
-          console.log(body);
 
           let activityURIs = '';
 
@@ -98,7 +97,7 @@ export default {
       );
     },
 
-    price() {
+    listByPrice() {
       let query = '';
       query = queries.variableQueries.LIST_Intertainment_By_DayLight_LessThan_SpecificValue(this.price);
 
@@ -111,9 +110,8 @@ export default {
         response => {
           let body = JSON.parse(response.body);
 
-          let activityURIs = '';
 
-          activityURIs = _.map(body.results.bindings, entry => entry.entertainment.value + "        price:       " + entry.price.value);
+          let activityURIs = _.map(body.results.bindings, entry => entry.attraction.value );
 
           // Getting the name after the Hash !
           let activityNames = _.map(activityURIs, uri => uri.split('#')[1]);
