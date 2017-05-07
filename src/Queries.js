@@ -55,7 +55,7 @@ var queries  = {
         FILTER(contains(?cuisine, \"`+cuisine+`\"))}
        `
        },
-        LIST_Restaurants_Rate_Specific_Cuisine :function(cuisine){
+        LIST_RESTAURANTS_WITH_SPECIFIC_CUISINE_WITH_RATE :function(cuisine){
           return ` PREFIX onto: <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       SELECT ?restaurant ?rate  WHERE {?restaurant rdf:type <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#Food>.

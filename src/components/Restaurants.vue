@@ -83,7 +83,7 @@ export default {
       if(this.cheapOnly) {
         query = queries.variableQueries.LIST_RESTAURANTS_WITH_SPECIFIC_CUISINE_CHEAP(cuisine);
       } else {
-        query = queries.variableQueries.LIST_RESTAURANTS_WITH_SPECIFIC_CUISINE(cuisine);
+        query = queries.variableQueries.LIST_RESTAURANTS_WITH_SPECIFIC_CUISINE_WITH_RATE(cuisine);
       }
 
       let body = {query, output: 'json'};
@@ -93,8 +93,8 @@ export default {
           let body = JSON.parse(response.body);
 
           let restaurants = _.map(
-            _.map(body.results.bindings, entry => ({uri: entry.restaurant.value})),
-            restaurant => ({name: restaurant.uri.split('#')[1]})
+            _.map(body.results.bindings, entry => ({uri: entry.restaurant.value, rate: entry.rate && entry.rate.value})),
+            restaurant => ({name: restaurant.uri.split('#')[1], rate: restaurant.rate})
           );
 
 
