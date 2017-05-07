@@ -16,7 +16,7 @@ import Category from '@/components/Category'
 import Historical from '@/components/Historical'
 import Sports from '@/components/Sports'
 import Entertainment from '@/components/Entertainment'
-
+import Restaurants from '@/components/Restaurants'
 
 
 import _ from 'lodash';
@@ -27,7 +27,8 @@ Vue.use(VueResource)
 Vue.http.options.emulateJSON = true;
 
 
-let components = [Home, FilterCities, Cities, CityDetail, Category, Sports,Historical,Entertainment];
+let components = [Home, FilterCities, Cities, CityDetail, Category, Sports,Historical,Entertainment,Restaurants];
+
 
 // Create components to be accessible everywhere
 _.forEach(components, component => {

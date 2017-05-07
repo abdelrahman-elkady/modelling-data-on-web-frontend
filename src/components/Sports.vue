@@ -1,23 +1,48 @@
 <template>
   <div>
 
+    <div class="ui green segment">
+      <button class="ui green button" v-on:click="listAllSports">All</button>
+      <button class="ui blue button" v-on:click="listWaterSports">Water sports</button>
+
+      <div class="ui icon input">
+        <input type="text" placeholder="Search with price" v-model="filterPrice">
+        <i class="circular search link icon" v-on:click="filterWithPrice"></i>
+      </div>
+    </div>
+
+    <div class="ui segments" v-for="sport in sports">
+      <div class="ui segment">
+        <div class="item">
+          <div class="content">
+            <h5 class="ui header">{{sport.name}}</h5>
+            <div class="meta">
+              <span v-if="sport.price !== undefined">price: {{sport.price}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 
 <script>
-// import _ from 'lodash';
+import _ from 'lodash';
+import queries from '@/Queries';
 
 export default {
   name: 'sports',
 
   data() {
     return {
-      sports: []
+      sports: [],
+      filterPrice: ''
     }
   },
 
   methods: {
-    populateSports() {
+    listAllSports() {
       let query = `
       PREFIX onto: <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -30,24 +55,66 @@ export default {
       this.$http.post('http://localhost:3030/ds/query', body).then(
         response => {
           let body = JSON.parse(response.body);
-          console.log(body);
-          //
-          // let activityURIs = _.map(body.results.bindings, entry => entry.attraction.value);
-          //
-          // // Getting the name after the Hash !
-          // let activityNames = _.map(activityURIs, uri => uri.split('#')[1]);
-          // this.activities = activityNames;
+
+          let sports = _.map(
+            _.map(body.results.bindings, entry => ({uri: entry.attraction.value, price: entry.price.value})),
+            sport => ({name: sport.uri.split('#')[1], price: sport.price})
+          );
+
+
+          this.sports = sports;
 
         },
         err => console.error(err)
       );
 
+    },
 
+    listWaterSports() {
+      let query = queries.constantQueries.LIST_SPORTS_WITH_WATER;
+      let body = {query, output: 'json'};
+
+      this.$http.post('http://localhost:3030/ds/query', body).then(
+        response => {
+          let body = JSON.parse(response.body);
+
+          let sports = _.map(
+            _.map(body.results.bindings, entry => ({uri: entry.waterSport.value})),
+            sport => ({name: sport.uri.split('#')[1]})
+          );
+
+          this.sports = sports;
+
+        },
+        err => console.error(err)
+      );
+    },
+
+    filterWithPrice() {
+      let query = queries.variableQueries.LIST_SPORTS_LESS_THAN_SPECIFIC_PRICE(this.filterPrice);
+
+      let body = {query, output: 'json'};
+
+      this.$http.post('http://localhost:3030/ds/query', body).then(
+        response => {
+          let body = JSON.parse(response.body);
+
+          let sports = _.map(
+            _.map(body.results.bindings, entry => ({uri: entry.waterSport.value, price: entry.price.value})),
+            sport => ({name: sport.uri.split('#')[1], price: sport.price})
+          );
+
+
+          this.sports = sports;
+
+        },
+        err => console.error(err)
+      );
     }
   },
 
   mounted() {
-    this.populateSports();
+    this.listAllSports();
   }
 }
 </script>

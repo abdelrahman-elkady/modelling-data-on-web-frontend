@@ -42,7 +42,7 @@
     <!-- END RADIO BUTTONS -->
 
     <input v-model="Ranking" placeholder="enter a ranking"><button v-on:click="ranking">submit</button>
-    
+
 
 
 
@@ -108,7 +108,7 @@ export default {
     this.$http.post('http://localhost:3030/ds/query', body).then(
       response => {
         let body = JSON.parse(response.body);
-     
+
         let activityURIs = '' ;
 
          switch(this.Historic_search) {
@@ -119,11 +119,11 @@ export default {
           default :   activityURIs = _.map(body.results.bindings, entry => entry.attraction.value );
         }
 
-       
+
 
         // Getting the name after the Hash !
         let activityNames = _.map(activityURIs, uri => uri.split('#')[1]);
-                
+
         this.activities = activityNames;
 
       },
@@ -136,7 +136,6 @@ export default {
 
 
        let body = {query, output: 'json'};
-       console.log(body);
     this.$http.post('http://localhost:3030/ds/query', body).then(
       response => {
         let body = JSON.parse(response.body);
@@ -146,11 +145,11 @@ export default {
           activityURIs = _.map(body.results.bindings, entry => entry.attraction.value );
         
 
-       
+
 
         // Getting the name after the Hash !
         let activityNames = _.map(activityURIs, uri => uri.split('#')[1]);
-                
+
         this.activities = activityNames;
 
       },

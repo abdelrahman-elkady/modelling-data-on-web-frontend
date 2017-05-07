@@ -26,8 +26,13 @@
       </router-link>
 
       <router-link to="/historical" class="item">
-        <i class="umbrella icon"></i>
-        Search Historical 
+        <i class="book icon"></i>
+        Historical
+      </router-link>
+
+      <router-link to="/restaurants" class="item">
+        <i class="food icon"></i>
+        Restaurants
       </router-link>
 
       <router-link to="/entertainment" class="item">

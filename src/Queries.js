@@ -4,7 +4,7 @@ var queries  = {
         return `PREFIX onto: <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto>
        SELECT ?city WHERE { ?city onto:type \"`+category+`\"}`
        },
-        SHOW_Specific_Historical_By_Ranking :function(ranking){ 
+        SHOW_Specific_Historical_By_Ranking :function(ranking){
          return `PREFIX onto: <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto>
           PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
           SELECT ?attraction  WHERE {?attraction rdf:type <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#Historical>.
@@ -12,7 +12,7 @@ var queries  = {
           FILTER(?ranking = `+ranking+`)}
         `
        },
-        LIST_Sport_LessThan_SpecificPrice :function(price){
+        LIST_SPORTS_LESS_THAN_SPECIFIC_PRICE :function(price){
          return `PREFIX onto: <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto>
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         SELECT ?waterSport ?price  WHERE {<http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#sports_water_sports> <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#recommends> ?waterSport.
@@ -37,7 +37,7 @@ var queries  = {
         ?attraction <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#duration> ?duration.
         FILTER(?duration = `+duration+`).}`
        },
-        LIST_Restaurants_Specific_Cuisine :function(cuisine){
+        LIST_RESTAURANTS_WITH_SPECIFIC_CUISINE :function(cuisine){
           return `PREFIX onto: <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto>
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         SELECT ?restaurant  WHERE {?restaurant rdf:type <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#Food>.
@@ -45,7 +45,7 @@ var queries  = {
         FILTER(contains(?cuisine, \"`+cuisine+`\")).}
        `
        },
-        LIST_Restaurants_Specific_Cuisine_Cheap :function(cuisine){
+        LIST_RESTAURANTS_WITH_SPECIFIC_CUISINE_CHEAP :function(cuisine){
           return `PREFIX onto: <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto>
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         SELECT ?restaurant  WHERE {?restaurant rdf:type <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#Food>.
@@ -55,7 +55,7 @@ var queries  = {
         FILTER(contains(?cuisine, \"`+cuisine+`\"))}
        `
        },
-        LIST_Restaurants_Rate_Specific_Cuisine :function(cuisine){
+        LIST_RESTAURANTS_WITH_SPECIFIC_CUISINE_WITH_RATE :function(cuisine){
           return ` PREFIX onto: <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       SELECT ?restaurant ?rate  WHERE {?restaurant rdf:type <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#Food>.
@@ -132,7 +132,7 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 SELECT ?attraction ?price  WHERE {?attraction rdf:type <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#Sports>.
 ?attraction onto:price ?price}
 `,
-  LIST_Sport_Include_Water:`
+  LIST_SPORTS_WITH_WATER:`
 PREFIX onto: <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 SELECT ?waterSport  WHERE {<http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#sports_water_sports> <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#recommends> ?waterSport.}
@@ -157,13 +157,13 @@ SELECT ?attraction  WHERE {?attraction rdf:type <http://www.semanticweb.org/moha
 ?attraction <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#openingHours> ?hours.
 FILTER(contains(?hours, "am")).}
 `,
-  LIST_Restaurants_With_Cuisine:`
+  LIST_RESTAURANT_WITH_CUISINE:`
 PREFIX onto: <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 SELECT ?restaurant ?cuisine  WHERE {?restaurant rdf:type <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#Food>.
 ?restaurant onto:cuisine ?cuisine.}`
 ,
-  LIST_Restaurants_Rate:`
+  LIST_RESTAURANTS_RATE:`
 PREFIX onto: <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 SELECT ?restaurant ?rate  WHERE {?restaurant rdf:type <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#Food>.
