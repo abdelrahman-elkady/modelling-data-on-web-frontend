@@ -89,7 +89,6 @@ export default {
       this.$http.post('http://localhost:3030/ds/query', body).then(
         response => {
           let body = JSON.parse(response.body);
-          console.log(body);
 
           let restaurants = _.map(
             _.map(body.results.bindings, entry => ({uri: entry.restaurant.value})),
