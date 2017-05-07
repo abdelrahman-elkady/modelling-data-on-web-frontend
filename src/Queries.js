@@ -157,7 +157,7 @@ SELECT ?attraction  WHERE {?attraction rdf:type <http://www.semanticweb.org/moha
 ?attraction <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#openingHours> ?hours.
 FILTER(contains(?hours, "am")).}
 `,
-  LIST_Restaurants_With_Cuisine:`
+  LIST_RESTAURANT_WITH_CUISINE:`
 PREFIX onto: <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 SELECT ?restaurant ?cuisine  WHERE {?restaurant rdf:type <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#Food>.
