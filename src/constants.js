@@ -5,7 +5,12 @@ const constants = {
   ATTRACTION_FOOD: 'Food',
 
   SORT_TYPE_RANKING: 'sort-ranking',
-  SORT_TYPE_PRICE: 'sort-price'
+  SORT_TYPE_PRICE: 'sort-price',
+
+  CITY_TYPE_Entertainment : 'Entertainment',
+  CITY_TYPE_Historic : 'Historic',
+  CITY_TYPE_Nature : 'Nature',
+  CITY_TYPE_Relaxation : 'Relaxation'
 
 }
 

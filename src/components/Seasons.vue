@@ -72,16 +72,16 @@ export default {
 
       switch(this.season) {
         case 'summer':
-          query = queries.LIST_SUMMER_CITIES;
+          query = queries.constantQueries.LIST_SUMMER_CITIES;
           break;
         case 'winter':
-          query = queries.LIST_WINTER_CITIES;
+          query = queries.constantQueries.LIST_WINTER_CITIES;
           break;
         case 'fall':
-          query = queries.LIST_FALL_CITIES;
+          query = queries.constantQueries.LIST_FALL_CITIES;
           break;
         case 'spring':
-          query = queries.LIST_SPRING_CITIES;
+          query = queries.constantQueries.LIST_SPRING_CITIES;
           break;
       }
 

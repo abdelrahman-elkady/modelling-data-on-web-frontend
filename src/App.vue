@@ -13,10 +13,20 @@
         Cities
       </router-link>
 
+
+
       <router-link to="/seasons" class="item">
         <i class="umbrella icon"></i>
         Search by seasons
       </router-link>
+
+      <router-link to="/category" class="item">
+        <i class="umbrella icon"></i>
+        Search by category
+      </router-link>
+
+      
+
 
     </div>
 
