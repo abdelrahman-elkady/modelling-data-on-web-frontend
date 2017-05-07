@@ -36,8 +36,8 @@
       </router-link>
 
       <router-link to="/entertainment" class="item">
-        <i class="umbrella icon"></i>
-        Entertainment 
+        <i class="gift icon"></i>
+        Entertainment
       </router-link>
 
 
