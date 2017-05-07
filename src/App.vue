@@ -30,6 +30,11 @@
         Search Historical 
       </router-link>
 
+      <router-link to="/entertainment" class="item">
+        <i class="umbrella icon"></i>
+        Search Entertainment 
+      </router-link>
+
 
 
 

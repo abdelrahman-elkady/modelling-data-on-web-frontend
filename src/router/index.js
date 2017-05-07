@@ -6,6 +6,8 @@ import Cities from '@/components/Cities'
 import Category from '@/components/Category'
 import Historical from '@/components/Historical'
 import Sports from '@/components/Sports'
+import Entertainment from '@/components/Entertainment'
+
 
 
 Vue.use(Router)
@@ -41,6 +43,11 @@ export default new Router({
       path: '/sports',
       name: 'Sports',
       component: Sports
+    },
+    {
+      path: '/entertainment',
+      name: 'Entertainment',
+      component: Entertainment
     }
   ]
 })

@@ -63,7 +63,16 @@ var queries  = {
       ?restaurant onto:rate ?rate.
       FILTER(contains(?cuisine, \"`+cuisine+`\")).}
       `
-       }
+       },
+       LIST_Entertainment_By_MyInterest :function(name,type){
+          return ` PREFIX onto: <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      SELECT ?entertainment   WHERE {?user rdf:name \"`+name+`\".
+        ?user rdf:type <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#User>.
+      ?user <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#interestedIn> ?entertainmentType.
+      ?entertainmentType <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#recommends> ?entertainment.
+      filter(contains(str(?entertainmentType), \"`+type+`\")).}`
+ }
 }
 ,
  constantQueries : {
@@ -140,15 +149,6 @@ filter(contains(str(?sportType), "sports")).}
 PREFIX onto: <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 SELECT ?entertainment WHERE {?entertainment rdf:type <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#Entertainment>.}
-
-PREFIX onto: <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-SELECT ?entertainment ?user ?entertainmentType WHERE {?user rdf:type <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#User>.
-?user <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#interestedIn> ?entertainmentType.
-?entertainmentType <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto#recommends> ?entertainment.
-filter(contains(str(?entertainmentType), "entertainment")).}
-`,
-  LIST_Intertainment_By_MyInterest:`
 `,
   LIST_Intertainment_By_DayLight:`
 PREFIX onto: <http://www.semanticweb.org/mohamed/ontologies/2017/2/TouristOnto>
